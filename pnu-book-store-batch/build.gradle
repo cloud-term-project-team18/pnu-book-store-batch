@@ -38,3 +38,14 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+
+bootJar {
+    archiveBaseName = 'batch'
+    archiveFileName = 'batch.jar'
+    archiveVersion = "0.0.1"
+}
+
+jar {
+    enabled = false
+}
