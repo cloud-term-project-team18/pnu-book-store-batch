@@ -15,6 +15,7 @@ import org.springframework.batch.item.file.transform.FieldSet;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -54,7 +55,7 @@ public class BatchConfig {
 	public FlatFileItemReader<SubjectDto> reader(@Value("#{jobParameters['inputFile']}") String inputFile) {
 		return new FlatFileItemReaderBuilder<SubjectDto>()
 			.name("csvReader")
-			.resource(new FileSystemResource(String.format("./src/main/resources/%s", inputFile)))
+			.resource(new ClassPathResource(inputFile))
 			.delimited()
 			.names(new String[]{"num", "college", "department", "division", "grade", "code", "bunban",
 				"subjectName", "gubun", "score", "theory", "practice", "professor", "limit", "timetable",
