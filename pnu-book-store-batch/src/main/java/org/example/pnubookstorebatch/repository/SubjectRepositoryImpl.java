@@ -57,7 +57,7 @@ public class SubjectRepositoryImpl implements SubjectRepository {
 				return subjectDtoList.size();
 			}
 		});
-		System.out.println(subjectDtoList);
+
 		jdbcTemplate.execute(String.format("INSERT INTO %s (subject_name, college, department, professor, "
 			+ "created_at, last_modified_at, is_deleted) "
 			+ "SELECT t.subject_name, t.college, t.department, t.professor, "

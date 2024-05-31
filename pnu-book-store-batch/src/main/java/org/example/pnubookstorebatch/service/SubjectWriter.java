@@ -16,10 +16,11 @@ public class SubjectWriter implements ItemWriter<SubjectDto> {
 	private final SubjectRepository subjectRepository;
 	@Override
 	public void write(Chunk<? extends SubjectDto> chunk) throws Exception {
-		log.info(String.valueOf(chunk.size()));
+
 		subjectRepository.insertNoDuplicatedSubject(chunk.getItems()
 			.stream()
 			.map(subjectDto -> (SubjectDto) subjectDto)
+			.distinct()
 			.toList());
 	}
 }
